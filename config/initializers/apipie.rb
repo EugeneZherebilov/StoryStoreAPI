@@ -1,5 +1,5 @@
 Apipie.configure do |config|
-  config.app_name                = "Chat API"
+  config.app_name                = "StoryStore API"
   config.default_version         = "1.0"
   config.api_base_url            = "/"
   config.doc_base_url            = "/docs"
