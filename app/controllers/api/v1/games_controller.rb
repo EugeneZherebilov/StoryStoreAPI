@@ -1,4 +1,4 @@
-class Api::V1:: ConversationsController < BaseController
+class Api::V1::GamesController < BaseController
 
   before_action :create_conversation_with_users, only: [:create]
 

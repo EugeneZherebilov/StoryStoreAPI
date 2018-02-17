@@ -29,7 +29,7 @@ class Api::V1:: MessagesController < BaseController
   end
 
   def find_conversation
-    @conversation = Conversation.find(params[:conversation_id])
+    @conversation = Game.find(params[:conversation_id])
   end
 
 end

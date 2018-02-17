@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      # Conversation & Conversation messages
-      resources :conversations do
+      # Game & Game messages
+      resources :games do
         resources :messages, except: :show
       end
 
