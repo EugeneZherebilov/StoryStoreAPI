@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  searchkick text_middle: [:name]
+  #searchkick text_middle: [:name]
 
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable, :omniauthable
