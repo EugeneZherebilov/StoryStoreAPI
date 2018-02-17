@@ -25,7 +25,7 @@ class Users::OmniauthCallbacksController < DeviseTokenAuth::OmniauthCallbacksCon
       @resource.image = @resource.return_avatar 'large'
       render_data_or_redirect('deliverCredentials', @auth_params.as_json, @resource.as_json.merge(image_medium: image_medium, image_small: image_small))
       #Elastic servise update data
-      User.find_by(id: @resource.id).reindex(:search_data)
+      #User.find_by(id: @resource.id).reindex(:search_data)
     end
   end
 

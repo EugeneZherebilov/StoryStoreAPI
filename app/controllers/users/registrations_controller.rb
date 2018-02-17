@@ -40,7 +40,7 @@ class Users::RegistrationsController < DeviseTokenAuth::RegistrationsController
       resource_class.skip_callback("create", :after, :send_on_create_confirmation_instructions)
       if @resource.save
         #Elastic servise update data
-        User.find_by(id: @resource.id).reindex(:search_data)
+        #User.find_by(id: @resource.id).reindex(:search_data)
 
         yield @resource if block_given?
 
