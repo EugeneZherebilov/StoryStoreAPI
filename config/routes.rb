@@ -11,9 +11,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       # Game & Game messages
-      resources :games do
-        resources :messages, except: :show
-      end
+      resources :games
 
       #Search
       get 'search_users', to: 'search#find_users'

@@ -1,6 +1,8 @@
 require 'devise-i18n'
 class Users::SessionsController < DeviseTokenAuth::SessionsController
 
+  #before_action :authenticate_user!, only: [:keep_alive]
+
   def create
     # Check
     field = (resource_params.keys.map(&:to_sym) & resource_class.authentication_keys).first

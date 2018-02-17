@@ -42,7 +42,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.1]
       t.integer :role
       t.string  :country
       t.string  :city
-      t.string  :language
+      t.string  :language, default: 'ru'
 
       ## Tokens
       t.json :tokens

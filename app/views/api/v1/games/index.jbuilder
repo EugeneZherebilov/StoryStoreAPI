@@ -1,3 +1,3 @@
-json.conversations do
-  json.array! @conversations
+json.game do
+  json.array! @games
 end
