@@ -39,7 +39,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.1]
       t.string  :name
       t.string  :image
       t.string  :email
-      t.integer :role
+      t.integer :role, default: 'user'
       t.string  :country
       t.string  :city
       t.string  :language, default: 'ru'

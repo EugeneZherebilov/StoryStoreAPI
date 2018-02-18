@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
+  include CanCan::ControllerAdditions
   include ActionView::Rendering
   include LocaleHelper
 
   before_action :set_headers_server_time
+
+  rescue_from CanCan::AccessDenied do
+    head(:forbidden)
+  end
 
   protected
 

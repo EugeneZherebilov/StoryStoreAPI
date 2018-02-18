@@ -1,7 +1,8 @@
 class Api::V1::GamesController < BaseController
 
   before_action :authenticate_user!, except: %i[index]
-  before_action :find_game, only: %i[update destroy add_player delete_player]
+  before_action :find_game, only: %i[update destroy add_player delete_player update_image]
+  load_and_authorize_resource only: %i[update destroy]
 
   def index
     @games = Game.all
@@ -9,7 +10,7 @@ class Api::V1::GamesController < BaseController
   end
 
   def create
-    @game = Game.create(create_game_params)
+    @game = Game.accessible_by(current_ability).create(create_game_params)
     if @game.valid?
       @game.save!
       render :create, status: :created
@@ -32,7 +33,7 @@ class Api::V1::GamesController < BaseController
   end
 
   def destroy
-    if @game.destroy
+      if @game.destroy
       head(:ok)
     else
       head(:unprocessable_entity)
@@ -53,6 +54,15 @@ class Api::V1::GamesController < BaseController
       head :ok
     else
       head :unprocessable_entity
+    end
+  end
+
+  def update_image
+    if params.key?(:image)
+      @game.update_image(params)
+      render :update_image
+    else
+      render json: { errors: I18n.t("user_settings.INVALID_PARAMS") }, status: :unprocessable_entity
     end
   end
 
@@ -83,6 +93,10 @@ class Api::V1::GamesController < BaseController
   
   def find_game_user
     GameUser.find_by(game_id: @game.id, user_id: @user.id)
+  end
+
+  def current_ability
+    @current_ability ||= Ability.new(current_user)
   end
 
 end

@@ -1,5 +1,11 @@
 class Game < ApplicationRecord
-  has_many :game_users, as: :players, dependent: :destroy
+
+  include S3Upload
+  include UpdateImage
+
+  S3_BUCKET_NAME = 'storystore-game-image'.freeze
+
+  has_many :game_users, dependent: :destroy
   has_many :users, through: :game_users
 
   NAME_LENGTH_MAXIMUM = 50

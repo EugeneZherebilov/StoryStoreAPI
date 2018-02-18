@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
+
+  include S3Upload
+  include UpdateImage
   #searchkick text_middle: [:name]
+
+  S3_BUCKET_NAME = 'storystore-avatar'.freeze
 
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable, :omniauthable
@@ -17,6 +22,8 @@ class User < ActiveRecord::Base
   FACEBOOK_AVATAR = ['?width=400&height=400', '?type=large', ''].freeze
   GOOGLE_AVATAR = ['', '?sz=145', '?sz=45'].freeze
   ST_AVATAR = ['', '_medium', '_small'].freeze
+  
+  enum role:  %i[user master], _prefix: :role
 
   has_many :identities, dependent: :destroy
   has_many :game_users, dependent: :destroy

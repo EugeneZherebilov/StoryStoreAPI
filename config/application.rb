@@ -44,5 +44,6 @@ module StroryStore
                  methods: [:get, :post, :options, :delete, :put]
       end
     end
+    config.i18n.available_locales = %w(en ru)
   end
 end
