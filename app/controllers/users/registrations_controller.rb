@@ -77,6 +77,6 @@ class Users::RegistrationsController < DeviseTokenAuth::RegistrationsController
   protected
 
   def sign_up_params
-    params.permit(*params_for_resource(:sign_up) + [:name])
+    params.permit(*params_for_resource(:sign_up) + %i[name role])
   end
 end
