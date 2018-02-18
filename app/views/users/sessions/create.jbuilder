@@ -1,5 +1,6 @@
 json.data do
-  json.call(@resource, :id, :provider, :uid, :email, :lasted_at, :created_at, :updated_at, :email, :name)
+  json.call(@resource, :id, :provider, :uid, :email, :role, :lasted_at,
+            :created_at, :updated_at, :email, :name)
   # json.image @resource.return_avatar 'large'
   # json.image_medium @resource.return_avatar 'medium'
   # json.image_small @resource.return_avatar 'small'
