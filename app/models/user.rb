@@ -23,10 +23,12 @@ class User < ActiveRecord::Base
   GOOGLE_AVATAR = ['', '?sz=145', '?sz=45'].freeze
   ST_AVATAR = ['', '_medium', '_small'].freeze
   
-  enum role:  %i[user master], _prefix: :role
+  enum role:  %i[user superuser], _prefix: :role
 
   has_many :identities, dependent: :destroy
+  has_many :games, dependent: :destroy
   has_many :game_users, dependent: :destroy
+  has_many :groups, dependent: :destroy
 
   def return_avatar(enum)
     type = ['large', 'medium', 'small']

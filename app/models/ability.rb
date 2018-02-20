@@ -6,12 +6,12 @@ class Ability
 
     alias_action :read, to: :see
 
-    can [:update, :create, :destroy], Game do
-      user.role == 'master'
+    can [:update, :destroy], Game do |game|
+      user.id == game.user_id.id
     end
 
-    can [:update, :create, :destroy], Group do
-      user.role == 'master'
+    can [:update, :destroy], Group do |group|
+      user.id == group.user_id.id && user.role == 'superuser'
     end
   end
 end

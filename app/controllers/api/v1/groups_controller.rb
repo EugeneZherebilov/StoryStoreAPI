@@ -9,7 +9,7 @@ class Api::V1::GroupsController < BaseController
   end
 
   def create
-    @group = Group.accessible_by(current_ability).create(create_group_params)
+    @group = current_user.groups.create(create_group_params)
     if @group.valid?
       @group.save!
       render :create, status: :created

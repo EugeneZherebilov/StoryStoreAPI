@@ -10,7 +10,7 @@ class Api::V1::GamesController < BaseController
   end
 
   def create
-    @game = Game.accessible_by(current_ability).create(create_game_params)
+    @game = current_user.games.create(create_game_params)
     if @game.valid?
       @game.save!
       render :create, status: :created

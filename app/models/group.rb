@@ -1,5 +1,9 @@
 class Group < ApplicationRecord
 
+
+  belongs_to :user
+  has_many :users, through: :game_users
+
   NAME_LENGTH_MAXIMUM = 50
   DESCRIPTION_LENGTH_MAXIMUM = 300
   DATA_LENGTH_MINIMUM = 1

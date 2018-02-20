@@ -5,6 +5,7 @@ class Game < ApplicationRecord
 
   S3_BUCKET_NAME = 'storystore-game-image'.freeze
 
+  belongs_to :user
   has_many :game_users, dependent: :destroy
   has_many :users, through: :game_users
 
